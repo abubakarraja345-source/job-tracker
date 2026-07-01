@@ -1,0 +1,54 @@
+/* ============================================================
+   Job-Tracker — Responsive Rules
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero .lede { max-width: 100%; }
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+  .chart-grid { grid-template-columns: 1fr; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 860px) {
+  .auth-shell { grid-template-columns: 1fr; }
+  .auth-visual { display: none; }
+}
+
+@media (max-width: 780px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 18px;
+    overflow-x: auto;
+  }
+  .sidebar-brand { padding: 0 16px 0 0; }
+  .trail-nav { display: flex; flex: none; }
+  .trail-nav::before { display: none; }
+  .trail-nav li { margin: 0 2px; }
+  .trail-nav a { padding: 8px 10px; white-space: nowrap; }
+  .trail-dot { display: none; }
+  .sidebar-footer { display: none; }
+  .main-content { padding: 24px 18px 50px; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .nav-public .links { display: none; }
+  .hero h1 { font-size: 2.3rem; }
+  .job-table thead { display: none; }
+  .job-table, .job-table tbody, .job-table tr, .job-table td { display: block; width: 100%; }
+  .job-table tr { border: 1px solid var(--line-soft); border-radius: var(--radius-sm); margin-bottom: 12px; padding: 8px 14px; }
+  .job-table td { border-bottom: none; padding: 8px 0; }
+  .job-table .row-actions { justify-content: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 18px; }
+  .hero-cta { flex-direction: column; }
+  .hero-cta .btn { width: 100%; }
+}

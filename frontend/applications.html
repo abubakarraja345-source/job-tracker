@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applications — Job-Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">Job<span>Tracker</span></div>
+    <ul class="trail-nav">
+      <li><a href="dashboard.html" data-page="dashboard"><span class="trail-dot"></span>Dashboard</a></li>
+      <li><a href="applications.html" data-page="applications"><span class="trail-dot"></span>Applications</a></li>
+      <li><a href="add-job.html" data-page="add-job"><span class="trail-dot"></span>Add application</a></li>
+      <li><a href="reminders.html" data-page="reminders"><span class="trail-dot"></span>Reminders</a></li>
+      <li><a href="profile.html" data-page="profile"><span class="trail-dot"></span>Profile</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <strong id="sidebarUserName">—</strong>
+        <span id="sidebarUserEmail">—</span>
+      </div>
+      <button class="btn btn-ghost btn-sm btn-block" id="logoutBtn">Log out</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="topbar">
+      <div>
+        <span class="eyebrow">Every stop on the trail</span>
+        <h1>Applications</h1>
+      </div>
+      <a href="add-job.html" class="btn btn-primary">+ Add application</a>
+    </div>
+
+    <div class="filters-bar">
+      <input type="text" id="searchInput" placeholder="Search company or role…">
+      <select id="statusFilter">
+        <option value="All">All statuses</option>
+        <option value="Applied">Applied</option>
+        <option value="Interviewing">Interviewing</option>
+        <option value="Offer">Offer</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Withdrawn">Withdrawn</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <table class="job-table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Applied</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="jobsTableBody">
+          <tr><td colspan="5" class="muted">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal-box">
+    <h3>Delete this application?</h3>
+    <p class="muted">This will permanently remove the application, its notes, and any linked reminders.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cancelDelete">Cancel</button>
+      <button class="btn btn-danger" id="confirmDelete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/applications.js"></script>
+</body>
+</html>

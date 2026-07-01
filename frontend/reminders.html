@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reminders — Job-Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">Job<span>Tracker</span></div>
+    <ul class="trail-nav">
+      <li><a href="dashboard.html" data-page="dashboard"><span class="trail-dot"></span>Dashboard</a></li>
+      <li><a href="applications.html" data-page="applications"><span class="trail-dot"></span>Applications</a></li>
+      <li><a href="add-job.html" data-page="add-job"><span class="trail-dot"></span>Add application</a></li>
+      <li><a href="reminders.html" data-page="reminders"><span class="trail-dot"></span>Reminders</a></li>
+      <li><a href="profile.html" data-page="profile"><span class="trail-dot"></span>Profile</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <strong id="sidebarUserName">—</strong>
+        <span id="sidebarUserEmail">—</span>
+      </div>
+      <button class="btn btn-ghost btn-sm btn-block" id="logoutBtn">Log out</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="topbar">
+      <div>
+        <span class="eyebrow">Stay on it</span>
+        <h1>Reminders</h1>
+      </div>
+    </div>
+
+    <div class="card card-pad" style="max-width:520px; margin-bottom:26px;">
+      <h3>New reminder</h3>
+      <form id="reminderForm">
+        <div class="field">
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="Follow up with recruiter" required>
+        </div>
+        <div class="field">
+          <label for="remindAt">Date &amp; time</label>
+          <input type="datetime-local" id="remindAt" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add reminder</button>
+      </form>
+    </div>
+
+    <div id="remindersList"><p class="muted">Loading…</p></div>
+  </main>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/reminders.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application detail — Job-Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">Job<span>Tracker</span></div>
+    <ul class="trail-nav">
+      <li><a href="dashboard.html" data-page="dashboard"><span class="trail-dot"></span>Dashboard</a></li>
+      <li><a href="applications.html" data-page="applications"><span class="trail-dot"></span>Applications</a></li>
+      <li><a href="add-job.html" data-page="add-job"><span class="trail-dot"></span>Add application</a></li>
+      <li><a href="reminders.html" data-page="reminders"><span class="trail-dot"></span>Reminders</a></li>
+      <li><a href="profile.html" data-page="profile"><span class="trail-dot"></span>Profile</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <strong id="sidebarUserName">—</strong>
+        <span id="sidebarUserEmail">—</span>
+      </div>
+      <button class="btn btn-ghost btn-sm btn-block" id="logoutBtn">Log out</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="topbar">
+      <div>
+        <span class="eyebrow" id="jobCompanyEyebrow">—</span>
+        <h1 id="jobTitleHeading">Loading…</h1>
+      </div>
+      <div class="row-actions">
+        <button class="btn btn-secondary" id="editBtn">Edit</button>
+        <button class="btn btn-danger" id="deleteBtn">Delete</button>
+      </div>
+    </div>
+
+    <div class="card card-pad" style="margin-bottom:24px;">
+      <div class="stepper" id="stepper"></div>
+    </div>
+
+    <div class="detail-grid">
+      <div>
+        <div class="card card-pad" style="margin-bottom:20px;">
+          <h3>Details</h3>
+          <div class="info-row"><span class="k">Location</span><span class="v" id="detailLocation">—</span></div>
+          <div class="info-row"><span class="k">Salary range</span><span class="v" id="detailSalary">—</span></div>
+          <div class="info-row"><span class="k">Applied date</span><span class="v" id="detailAppliedDate">—</span></div>
+          <div class="info-row"><span class="k">Job posting</span><span class="v" id="detailUrl">—</span></div>
+          <div class="info-row"><span class="k">Status</span><span class="v" id="detailStatus">—</span></div>
+        </div>
+
+        <div class="card card-pad">
+          <h3>Notes</h3>
+          <form id="noteForm" style="margin-bottom:16px;">
+            <div class="field">
+              <textarea id="noteContent" placeholder="Interviewer names, questions asked, salary discussed…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Add note</button>
+          </form>
+          <div id="notesList"><p class="muted">Loading notes…</p></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card card-pad">
+          <h3>Add a reminder</h3>
+          <form id="reminderForm">
+            <div class="field">
+              <label for="reminderTitle">Reminder</label>
+              <input type="text" id="reminderTitle" placeholder="Send thank-you email" required>
+            </div>
+            <div class="field">
+              <label for="reminderAt">Date &amp; time</label>
+              <input type="datetime-local" id="reminderAt" required>
+            </div>
+            <button type="submit" class="btn btn-secondary btn-block btn-sm">Set reminder</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal-box">
+    <h3>Delete this application?</h3>
+    <p class="muted">This will permanently remove the application, its notes, and any linked reminders.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="cancelDelete">Cancel</button>
+      <button class="btn btn-danger" id="confirmDelete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/job-detail.js"></script>
+</body>
+</html>
