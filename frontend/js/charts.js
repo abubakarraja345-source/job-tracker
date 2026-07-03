@@ -1,5 +1,5 @@
 /* ============================================================
-   Job-Tracker — Chart.js helpers
+   4JobTracker — Chart.js helpers
    ============================================================ */
 
 const ChartsHelper = {

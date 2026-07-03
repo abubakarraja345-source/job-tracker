@@ -1,14 +1,14 @@
 /* ============================================================
-   Job-Tracker — Application detail page logic
+   4JobTracker — Application detail page logic
    ============================================================ */
 
 let currentJobId = null;
 let currentJob = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-  Utils.requireAuth();
+document.addEventListener('DOMContentLoaded', async () => {
+  await Utils.requireAuth();
   Utils.setActiveNav('applications');
-  Utils.fillSidebarUser();
+  await Utils.fillSidebarUser();
   Utils.bindLogout();
 
   const params = new URLSearchParams(window.location.search);

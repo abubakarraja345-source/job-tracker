@@ -1,7 +1,7 @@
 {
-  "name": "job-tracker-backend",
+  "name": "4jobtracker-backend",
   "version": "1.0.0",
-  "description": "Backend API for Job-Tracker application",
+  "description": "Backend API for 4JobTracker application",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

@@ -1,11 +1,11 @@
 /* ============================================================
-   Job-Tracker — Reminders page logic
+   4JobTracker — Reminders page logic
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
-  Utils.requireAuth();
+document.addEventListener('DOMContentLoaded', async () => {
+  await Utils.requireAuth();
   Utils.setActiveNav('reminders');
-  Utils.fillSidebarUser();
+  await Utils.fillSidebarUser();
   Utils.bindLogout();
 
   loadReminders();

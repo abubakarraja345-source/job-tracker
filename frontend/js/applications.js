@@ -1,13 +1,13 @@
 /* ============================================================
-   Job-Tracker — Applications list logic
+   4JobTracker — Applications list logic
    ============================================================ */
 
 let pendingDeleteId = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-  Utils.requireAuth();
+document.addEventListener('DOMContentLoaded', async () => {
+  await Utils.requireAuth();
   Utils.setActiveNav('applications');
-  Utils.fillSidebarUser();
+  await Utils.fillSidebarUser();
   Utils.bindLogout();
 
   loadJobs();

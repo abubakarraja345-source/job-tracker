@@ -1,9 +1,9 @@
 /* ============================================================
-   Job-Tracker — Auth page logic (login.html / register.html)
+   4JobTracker — Auth page logic (login.html / register.html)
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
-  Utils.redirectIfLoggedIn();
+document.addEventListener('DOMContentLoaded', async () => {
+  await Utils.redirectIfLoggedIn();
 
   const loginForm = document.getElementById('loginForm');
   const registerForm = document.getElementById('registerForm');
@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setLoading(btn, true, 'Log in');
       try {
-        const data = await Api.login({ email, password });
-        Api.setSession(data.token, data.user);
+        await Api.login({ email, password });
         window.location.href = 'dashboard.html';
       } catch (err) {
         showError(err.message);
@@ -57,9 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setLoading(btn, true, 'Create account');
       try {
-        const data = await Api.register({ fullName, email, password });
-        Api.setSession(data.token, data.user);
-        window.location.href = 'dashboard.html';
+        await Api.register({ fullName, email, password });
+        const session = await Api.getSession();
+        if (session) {
+          // Email confirmation is off in this Supabase project — log straight in.
+          window.location.href = 'dashboard.html';
+        } else {
+          // Email confirmation is required — Supabase sent a confirmation link.
+          hideError();
+          const successBox = document.createElement('div');
+          successBox.className = 'form-success visible';
+          successBox.textContent = 'Account created! Check your email to confirm it, then log in.';
+          registerForm.parentElement.insertBefore(successBox, registerForm);
+          registerForm.reset();
+          setLoading(btn, false, 'Create account');
+        }
       } catch (err) {
         showError(err.message);
         setLoading(btn, false, 'Create account');

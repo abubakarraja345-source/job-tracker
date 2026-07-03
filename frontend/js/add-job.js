@@ -1,11 +1,11 @@
 /* ============================================================
-   Job-Tracker — Add / edit application logic
+   4JobTracker — Add / edit application logic
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  Utils.requireAuth();
+  await Utils.requireAuth();
   Utils.setActiveNav('add-job');
-  Utils.fillSidebarUser();
+  await Utils.fillSidebarUser();
   Utils.bindLogout();
 
   const params = new URLSearchParams(window.location.search);

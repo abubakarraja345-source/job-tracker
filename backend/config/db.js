@@ -25,7 +25,7 @@ function getPool() {
     poolPromise = new sql.ConnectionPool(config)
       .connect()
       .then((pool) => {
-        console.log('✅ Connected to SQL Server (JobTrackerDB)');
+        console.log('✅ Connected to SQL Server (4JobTrackerDB)');
         return pool;
       })
       .catch((err) => {

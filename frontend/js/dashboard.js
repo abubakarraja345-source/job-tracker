@@ -1,11 +1,11 @@
 /* ============================================================
-   Job-Tracker — Dashboard logic
+   4JobTracker — Dashboard logic
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  Utils.requireAuth();
+  await Utils.requireAuth();
   Utils.setActiveNav('dashboard');
-  Utils.fillSidebarUser();
+  await Utils.fillSidebarUser();
   Utils.bindLogout();
 
   try {

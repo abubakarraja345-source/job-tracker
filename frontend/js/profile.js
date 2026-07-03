@@ -1,11 +1,11 @@
 /* ============================================================
-   Job-Tracker — Profile page logic
+   4JobTracker — Profile page logic
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  Utils.requireAuth();
+  await Utils.requireAuth();
   Utils.setActiveNav('profile');
-  Utils.fillSidebarUser();
+  await Utils.fillSidebarUser();
   Utils.bindLogout();
 
   const errorBox = document.getElementById('formError');
@@ -29,10 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
       await Api.updateProfile({ fullName, password: password || undefined });
-      const user = Api.getUser();
-      user.fullName = fullName;
-      Api.setSession(Api.getToken(), user);
-      Utils.fillSidebarUser();
+      await Utils.fillSidebarUser();
       successBox.textContent = 'Profile updated.';
       successBox.classList.add('visible');
       document.getElementById('password').value = '';

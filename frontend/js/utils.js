@@ -1,16 +1,18 @@
 /* ============================================================
-   Job-Tracker — Shared utilities
+   4JobTracker — Shared utilities
    ============================================================ */
 
 const Utils = {
-  requireAuth() {
-    if (!Api.getToken()) {
+  async requireAuth() {
+    const session = await Api.getSession();
+    if (!session) {
       window.location.href = 'login.html';
     }
   },
 
-  redirectIfLoggedIn() {
-    if (Api.getToken()) {
+  async redirectIfLoggedIn() {
+    const session = await Api.getSession();
+    if (session) {
       window.location.href = 'dashboard.html';
     }
   },
@@ -72,8 +74,8 @@ const Utils = {
     });
   },
 
-  fillSidebarUser() {
-    const user = Api.getUser();
+  async fillSidebarUser() {
+    const user = await Api.getUser();
     const nameEl = document.getElementById('sidebarUserName');
     const emailEl = document.getElementById('sidebarUserEmail');
     if (user && nameEl) nameEl.textContent = user.fullName;
@@ -83,8 +85,8 @@ const Utils = {
   bindLogout() {
     const btn = document.getElementById('logoutBtn');
     if (btn) {
-      btn.addEventListener('click', () => {
-        Api.clearSession();
+      btn.addEventListener('click', async () => {
+        await Api.signOut();
         window.location.href = 'login.html';
       });
     }
